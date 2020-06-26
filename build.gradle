@@ -46,9 +46,9 @@ apply plugin: 'org.hibernate.orm'
 
 ext {
     _group = "de.debuglevel"
-    _module = "greeter"
+    _module = "omnitrackerinternals"
     _mainClass = _group + "." + _module + ".Application"
-    _title = "Greeter Microservice"
+    _title = "OMNITRACKER internals"
 }
 
 // application plugin configuration
@@ -112,17 +112,17 @@ dependencies {
     implementation 'io.micronaut:micronaut-management'
     //implementation 'io.micronaut.configuration:micronaut-jmx' // activate JMX for the endpoints
     /// Persistence
-    kapt "io.micronaut.data:micronaut-data-processor"
-    implementation "io.micronaut.data:micronaut-data-hibernate-jpa"
-    implementation "io.micronaut.sql:micronaut-jdbc-hikari"
-    runtimeOnly "com.h2database:h2"
+//    kapt "io.micronaut.data:micronaut-data-processor"
+//    implementation "io.micronaut.data:micronaut-data-hibernate-jpa"
+//    implementation "io.micronaut.sql:micronaut-jdbc-hikari"
+//    runtimeOnly "com.h2database:h2"
     //testRuntimeOnly "org.hsqldb:hsqldb:$hsqldbVersion"
     //testRuntimeOnly "org.apache.derby:derby:$derbyVersion"
     /// Security
     kapt "io.micronaut.security:micronaut-security-annotations"
     implementation "io.micronaut.security:micronaut-security"
     /// Service registration and discovery
-    implementation "io.micronaut:micronaut-discovery-client"
+    //implementation "io.micronaut:micronaut-discovery-client"
 
     // Swagger / OpenAPI
     kapt "io.micronaut.configuration:micronaut-openapi"
