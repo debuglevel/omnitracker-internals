@@ -127,6 +127,9 @@ dependencies {
     // Swagger / OpenAPI
     kapt "io.micronaut.configuration:micronaut-openapi"
     implementation "io.swagger.core.v3:swagger-annotations"
+
+    // OMNITRACKER
+    implementation "de.debuglevel.omnitrackerdatabasebinding:omnitrackerdatabasebinding:0.0.16"
 }
 
 // Java configuration
