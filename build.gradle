@@ -57,6 +57,9 @@ mainClassName = _mainClass
 
 repositories {
     jcenter()
+    maven {
+        url "https://dl.bintray.com/debuglevel/maven"
+    }
 //    mavenLocal()
 //    maven {
 //        url "https://jitpack.io"
@@ -129,7 +132,7 @@ dependencies {
     implementation "io.swagger.core.v3:swagger-annotations"
 
     // OMNITRACKER
-    implementation "de.debuglevel.omnitrackerdatabasebinding:omnitrackerdatabasebinding:0.0.16"
+    implementation "de.debuglevel.omnitrackerdatabasebinding:omnitrackerdatabasebinding:0.0.18-SNAPSHOT"
 }
 
 // Java configuration
