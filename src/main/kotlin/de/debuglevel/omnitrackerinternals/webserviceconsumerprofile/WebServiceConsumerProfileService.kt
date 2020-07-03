@@ -7,7 +7,7 @@ import javax.inject.Singleton
 
 @Singleton
 class WebServiceConsumerProfileService(
-    override val entityService: de.debuglevel.omnitrackerdatabasebinding.entity.EntityService<WebServiceConsumerProfile>
+    override val entityService: de.debuglevel.omnitrackerdatabasebinding.webservice.WebServiceConsumerProfileService
 ) : EntityService<WebServiceConsumerProfile>() {
     private val logger = KotlinLogging.logger {}
 }
