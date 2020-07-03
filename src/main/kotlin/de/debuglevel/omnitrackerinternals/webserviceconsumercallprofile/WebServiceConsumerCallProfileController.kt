@@ -1,6 +1,6 @@
 package de.debuglevel.omnitrackerinternals.webserviceconsumercallprofile
 
-import de.debuglevel.omnitrackerdatabasebinding.webservice.WebServiceConsumerCallProfile
+import de.debuglevel.omnitrackerdatabasebinding.webserviceconsumercallprofile.WebServiceConsumerCallProfile
 import de.debuglevel.omnitrackerinternals.entity.EntityController
 import io.micronaut.http.annotation.Controller
 import io.swagger.v3.oas.annotations.tags.Tag
