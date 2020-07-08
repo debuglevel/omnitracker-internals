@@ -30,11 +30,11 @@
                 <th>Status</th>
             </thead>
             <tbody>
-                <webserviceconsumercallprofile-item
+                <tr is="webserviceconsumercallprofile-item"
                     v-for="item in webserviceconsumercallprofiles"
                     v-bind:webserviceconsumercallprofile="item"
                     v-bind:key="item.id"
-                ></webserviceconsumercallprofile-item>
+                ></tr>
             </tbody>
         </table>
     </div>
