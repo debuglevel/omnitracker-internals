@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebServiceConsumer Call Profiles</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+
+  <style>
+    .Valid { background-color: darkseagreen; }
+    .NotSet { background-color: lightsalmon; }
+  </style>
+
+</head>
+<body>
+
+  <div id="app">
+    <ol>
+        <webserviceconsumercallprofile-item
+            v-for="item in sortedwebserviceconsumercallprofiles"
+            v-bind:webserviceconsumercallprofile="item"
+            v-bind:key="item.id"
+        ></webserviceconsumercallprofile-item>
+    </ol>
+  </div>
+
+  <script>
+    Vue.component('webserviceconsumercallprofile-item', {
+        props: ['webserviceconsumercallprofile'],
+        template: '<li v-bind:class="webserviceconsumercallprofile.status">{{ webserviceconsumercallprofile.folder.path }} → {{ webserviceconsumercallprofile.name }} ({{ webserviceconsumercallprofile.status }})</li>'
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            webserviceconsumercallprofiles: [
+                // { id: 0, name: 'AppleService', status: 'Valid' },
+                // { id: 1, name: 'BananaService', status: 'NotSet' },
+                // { id: 2, name: 'CoconutService', status: 'Valid' }
+            ]
+        },
+        computed: {
+            sortedwebserviceconsumercallprofiles: function () {
+                return this.webserviceconsumercallprofiles.sort()
+            }
+        },
+        mounted() {
+            axios
+                .get('http://localhost:8080/webserviceconsumercallprofiles/')
+                .then(response => (this.webserviceconsumercallprofiles = response.data))
+        }
+    })
+  </script>
+</body>
+</html>
