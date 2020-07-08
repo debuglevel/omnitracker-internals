@@ -23,22 +23,35 @@
 
     <div id="app">
         <h1>WebServiceConsumer Call Profiles</h1>
-        <ol>
-            <webserviceconsumercallprofile-item
-                v-for="item in webserviceconsumercallprofiles"
-                v-bind:webserviceconsumercallprofile="item"
-                v-bind:key="item.id"
-            ></webserviceconsumercallprofile-item>
-        </ol>
+        <table class="table table-sm table-dark">
+            <thead>
+                <th>Folder</th>
+                <th>WSCC name</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                <webserviceconsumercallprofile-item
+                    v-for="item in webserviceconsumercallprofiles"
+                    v-bind:webserviceconsumercallprofile="item"
+                    v-bind:key="item.id"
+                ></webserviceconsumercallprofile-item>
+            </tbody>
+        </table>
     </div>
 
     <script>
         Vue.component('webserviceconsumercallprofile-item', {
             props: ['webserviceconsumercallprofile'],
-            template: '<li v-bind:class="statusStyle(webserviceconsumercallprofile.status)">{{ webserviceconsumercallprofile.folder.path }} → {{ webserviceconsumercallprofile.name }} ({{ webserviceconsumercallprofile.status }})</li>',
+            template: `
+               <tr v-bind:class="statusStyle(webserviceconsumercallprofile.status)">
+                 <td>{{ webserviceconsumercallprofile.folder.path }}</td>
+                 <td>{{ webserviceconsumercallprofile.name }}</td>
+                 <td>{{ webserviceconsumercallprofile.status }}</td>
+               </tr>
+            `,
             methods: {
               statusStyle: function (status) {
-                return status == "Valid" ? "valid" : "invalid"
+                return status == "Valid" ? "table-success" : "table-danger"
               }
             }
         })
