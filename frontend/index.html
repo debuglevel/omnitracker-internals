@@ -15,8 +15,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 
         <style>
-            .Valid { background-color: darkseagreen; }
-            .NotSet { background-color: lightsalmon; }
+            .valid { background-color: #b1dfbb; }
+            .invalid { background-color: #f5c6cb; }
         </style>
     </head>
     <body>
@@ -35,7 +35,12 @@
     <script>
         Vue.component('webserviceconsumercallprofile-item', {
             props: ['webserviceconsumercallprofile'],
-            template: '<li v-bind:class="webserviceconsumercallprofile.status">{{ webserviceconsumercallprofile.folder.path }} → {{ webserviceconsumercallprofile.name }} ({{ webserviceconsumercallprofile.status }})</li>'
+            template: '<li v-bind:class="statusStyle(webserviceconsumercallprofile.status)">{{ webserviceconsumercallprofile.folder.path }} → {{ webserviceconsumercallprofile.name }} ({{ webserviceconsumercallprofile.status }})</li>',
+            methods: {
+              statusStyle: function (status) {
+                return status == "Valid" ? "valid" : "invalid"
+              }
+            }
         })
 
         var vm = new Vue({
