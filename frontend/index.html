@@ -25,7 +25,7 @@
         <h1>WebServiceConsumer Call Profiles</h1>
         <ol>
             <webserviceconsumercallprofile-item
-                v-for="item in sortedwebserviceconsumercallprofiles"
+                v-for="item in webserviceconsumercallprofiles"
                 v-bind:webserviceconsumercallprofile="item"
                 v-bind:key="item.id"
             ></webserviceconsumercallprofile-item>
@@ -46,11 +46,6 @@
                     // { id: 1, name: 'BananaService', status: 'NotSet' },
                     // { id: 2, name: 'CoconutService', status: 'Valid' }
                 ]
-            },
-            computed: {
-                sortedwebserviceconsumercallprofiles: function () {
-                    return this.webserviceconsumercallprofiles.sort()
-                }
             },
             mounted() {
                 axios
