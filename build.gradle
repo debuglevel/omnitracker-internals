@@ -132,7 +132,7 @@ dependencies {
     implementation "io.swagger.core.v3:swagger-annotations"
 
     // OMNITRACKER
-    implementation "de.debuglevel.omnitrackerdatabasebinding:omnitrackerdatabasebinding:0.0.18-SNAPSHOT"
+    implementation "de.debuglevel.omnitrackerdatabasebinding:omnitrackerdatabasebinding:0.1.2"
 }
 
 // Java configuration
