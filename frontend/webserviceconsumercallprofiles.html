@@ -1,76 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
 
-        <title>WebServiceConsumer Call Profiles</title>
+    <title>OMNITRACKER Internals - WebServiceConsumer Call Profiles</title>
 
-        <!-- development version, includes helpful console warnings -->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 
-        <style>
-            .valid { background-color: #b1dfbb; }
-            .invalid { background-color: #f5c6cb; }
-        </style>
-    </head>
-    <body>
-
+    <style>
+      .valid {
+        background-color: #b1dfbb;
+      }
+      .invalid {
+        background-color: #f5c6cb;
+      }
+    </style>
+  </head>
+  <body>
     <div id="app">
-        <h1>WebServiceConsumer Call Profiles</h1>
-        <table class="table table-sm table-hover">
-            <thead class="thead-dark">
-                <th>Folder</th>
-                <th>WSCC name</th>
-                <th>Status</th>
-            </thead>
-            <tbody>
-                <tr is="webserviceconsumercallprofile-item"
-                    v-for="item in webserviceconsumercallprofiles"
-                    v-bind:webserviceconsumercallprofile="item"
-                    v-bind:key="item.id"
-                ></tr>
-            </tbody>
-        </table>
+      <h1>WebServiceConsumer Call Profiles</h1>
+      <table class="table table-sm table-hover">
+        <thead class="thead-dark">
+          <th>Folder</th>
+          <th>WSCC name</th>
+          <th>Status</th>
+        </thead>
+        <tbody>
+          <tr
+            is="webserviceconsumercallprofile-item"
+            v-for="item in webserviceconsumercallprofiles"
+            v-bind:webserviceconsumercallprofile="item"
+            v-bind:key="item.id"
+          ></tr>
+        </tbody>
+      </table>
     </div>
 
     <script>
-        Vue.component('webserviceconsumercallprofile-item', {
-            props: ['webserviceconsumercallprofile'],
-            template: `
+      Vue.component("webserviceconsumercallprofile-item", {
+        props: ["webserviceconsumercallprofile"],
+        template: `
                <tr v-bind:class="statusStyle(webserviceconsumercallprofile.status)">
                  <td>{{ webserviceconsumercallprofile.folder.path }}</td>
                  <td>{{ webserviceconsumercallprofile.name }}</td>
                  <td>{{ webserviceconsumercallprofile.status }}</td>
                </tr>
             `,
-            methods: {
-              statusStyle: function (status) {
-                return status == "Valid" ? "table-success" : "table-danger"
-              }
-            }
-        })
+        methods: {
+          statusStyle: function (status) {
+            return status == "Valid" ? "table-success" : "table-danger";
+          },
+        },
+      });
 
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                webserviceconsumercallprofiles: [
-                    // { id: 0, name: 'AppleService', status: 'Valid' },
-                    // { id: 1, name: 'BananaService', status: 'NotSet' },
-                    // { id: 2, name: 'CoconutService', status: 'Valid' }
-                ]
-            },
-            mounted() {
-                axios
-                    .get('http://localhost:8080/webserviceconsumercallprofiles/')
-                    .then(response => (this.webserviceconsumercallprofiles = response.data))
-            }
-        })
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          webserviceconsumercallprofiles: [
+            // { id: 0, name: 'AppleService', status: 'Valid' },
+            // { id: 1, name: 'BananaService', status: 'NotSet' },
+            // { id: 2, name: 'CoconutService', status: 'Valid' }
+          ],
+        },
+        mounted() {
+          axios
+            .get("http://localhost:8080/webserviceconsumercallprofiles/")
+            .then(
+              (response) =>
+                (this.webserviceconsumercallprofiles = response.data)
+            );
+        },
+      });
     </script>
-    </body>
+  </body>
 </html>
