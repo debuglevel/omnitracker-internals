@@ -15,4 +15,11 @@ abstract class EntityService<T : Entity> {
         logger.debug { "Got ${list.size} entities" }
         return list
     }
+
+    fun get(id: Int): T? {
+        logger.debug { "Getting entity id='$id'..." }
+        val entity = entityService.get(id)
+        logger.debug { "Got entity: $entity" }
+        return entity
+    }
 }

@@ -15,4 +15,11 @@ abstract class EntityController<T : Entity> {
 
         return entityService.getAll()
     }
+
+    @Get("/{id}")
+    fun getOne(id: Int): T? {
+        logger.debug("Called getOne(id=$id)")
+
+        return entityService.get(id)
+    }
 }
