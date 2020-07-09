@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <title>OMNITRACKER Internals - Scripts</title>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Scripts</h1>
+      <table class="table table-sm table-hover">
+        <thead class="thead-dark">
+          <th>Folder</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Content</th>
+        </thead>
+        <tbody>
+          <tr
+            is="script-item"
+            v-for="item in scripts"
+            v-bind:script="item"
+            v-bind:key="item.id"
+          ></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      Vue.component("script-item", {
+        props: ["script"],
+        template: `
+               <tr>
+                 <td>{{ script.folder.path }}</td>
+                 <td>{{ script.name }}</td>
+                 <td>{{ script.type }}</td>
+                 <td><pre>{{ script.content }}</pre></td>
+               </tr>
+            `,
+      });
+
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          scripts: [
+            // { id: 0, name: 'AppleService', status: 'Valid' },
+            // { id: 1, name: 'BananaService', status: 'NotSet' },
+            // { id: 2, name: 'CoconutService', status: 'Valid' }
+          ],
+        },
+        mounted() {
+          axios
+            .get("http://localhost:8080/scripts/")
+            .then((response) => (this.scripts = response.data));
+        },
+      });
+    </script>
+  </body>
+</html>
