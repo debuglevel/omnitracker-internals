@@ -1,4 +1,4 @@
-package de.debuglevel.omnitrackerinternals.webserviceconsumercallprofile
+package de.debuglevel.omnitrackerinternals.entity.webserviceconsumercallprofile
 
 import de.debuglevel.omnitrackerdatabasebinding.webserviceconsumercallprofile.WebServiceConsumerCallProfile
 import de.debuglevel.omnitrackerinternals.entity.EntityController

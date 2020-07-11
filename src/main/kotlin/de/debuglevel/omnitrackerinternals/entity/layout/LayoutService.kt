@@ -1,4 +1,4 @@
-package de.debuglevel.omnitrackerinternals.layout
+package de.debuglevel.omnitrackerinternals.entity.layout
 
 import de.debuglevel.omnitrackerdatabasebinding.layout.Layout
 import de.debuglevel.omnitrackerinternals.entity.EntityService

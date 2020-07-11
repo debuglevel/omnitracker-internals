@@ -1,4 +1,4 @@
-package de.debuglevel.omnitrackerinternals.omnitrackerdatabasebinding
+package de.debuglevel.omnitrackerinternals.entity.omnitrackerdatabasebinding
 
 import de.debuglevel.omnitrackerdatabasebinding.OmnitrackerDatabase
 import mu.KotlinLogging

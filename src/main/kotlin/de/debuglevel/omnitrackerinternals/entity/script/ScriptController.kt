@@ -1,4 +1,4 @@
-package de.debuglevel.omnitrackerinternals.script
+package de.debuglevel.omnitrackerinternals.entity.script
 
 import de.debuglevel.omnitrackerdatabasebinding.script.Script
 import de.debuglevel.omnitrackerinternals.entity.EntityController

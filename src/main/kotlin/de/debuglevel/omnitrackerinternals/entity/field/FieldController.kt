@@ -1,4 +1,4 @@
-package de.debuglevel.omnitrackerinternals.field
+package de.debuglevel.omnitrackerinternals.entity.field
 
 import de.debuglevel.omnitrackerdatabasebinding.field.Field
 import de.debuglevel.omnitrackerinternals.entity.EntityController
