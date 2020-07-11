@@ -12,7 +12,7 @@ class DiagramController(
 ) {
     private val logger = KotlinLogging.logger {}
 
-    @Get("/entityrelationship/", produces = ["image/svg+xml"])
+    @Get("/entityrelationship/svg/", produces = ["image/svg+xml"])
     fun getOne(): String {
         logger.debug("Called getOne()")
 
