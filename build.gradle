@@ -133,6 +133,10 @@ dependencies {
 
     // OMNITRACKER
     implementation "de.debuglevel.omnitrackerdatabasebinding:omnitrackerdatabasebinding:0.1.2"
+
+    // Visualizations
+    implementation "net.sourceforge.plantuml:plantuml:8059"
+    implementation 'guru.nidi:graphviz-java:0.5.4'
 }
 
 // Java configuration
