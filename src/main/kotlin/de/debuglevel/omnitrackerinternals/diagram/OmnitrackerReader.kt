@@ -5,13 +5,16 @@ import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Attribute
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Cardinality
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Entity
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Relationship
+import mu.KotlinLogging
 import javax.inject.Singleton
 
 @Singleton
 class OmnitrackerReader(
     val folderService: de.debuglevel.omnitrackerdatabasebinding.folder.FolderService,
     val fieldService: de.debuglevel.omnitrackerdatabasebinding.field.FieldService
-) : Reader {
+) {
+    private val logger = KotlinLogging.logger {}
+
     fun sanitize(name: String): String {
         return name
 
@@ -35,7 +38,7 @@ class OmnitrackerReader(
     private val fields = fieldService.getAll()
     private val folders = folderService.getAll()
 
-    override val entities: List<Entity>
+    val entities: List<Entity>
         get() {
             val entities =
                 folders.values.map { folder ->
@@ -49,22 +52,26 @@ class OmnitrackerReader(
             return entities
         }
 
-    override val relationships: List<Relationship>
+    val relationships: List<Relationship>
         get() {
             val relationships = mutableListOf<Relationship>()
 
             for (entity in entities) {
-                for (attribute in entity.attributes.filter { it.field.referenceFolderId != null }) {
-                    val referencedEntity = entities.first { it.folder.id == attribute.field.referenceFolderId }
+                for (attribute in entity.attributes.filter { it.field.referenceFolderId != null && it.field.referenceFolderId != 0 }) {
+                    logger.debug { "Searching for folder with id='${attribute.field.referenceFolderId}'..." }
+                    val referencedEntity =
+                        entities.firstOrNull { it.folder.id == attribute.field.referenceFolderId } // CAVEAT: the sample database actually contains references to folder 0 or others which do not exist; hence firstOrNull()
 
-                    val cardinality = when (attribute.field.type) {
-                        FieldType.ObjectReference -> Cardinality.ZeroOrOne
-                        FieldType.ObjectReferenceList -> Cardinality.ZeroOrMore
-                        else -> Cardinality.Unknown
+                    if (referencedEntity != null) {
+                        val cardinality = when (attribute.field.type) {
+                            FieldType.ObjectReference -> Cardinality.ZeroOrOne
+                            FieldType.ObjectReferenceList -> Cardinality.ZeroOrMore
+                            else -> Cardinality.Unknown
+                        }
+
+                        val relationship = Relationship(entity, referencedEntity, cardinality, Cardinality.One)
+                        relationships.add(relationship)
                     }
-
-                    val relationship = Relationship(entity, referencedEntity, cardinality, Cardinality.One)
-                    relationships.add(relationship)
                 }
             }
 

@@ -5,6 +5,7 @@ import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Relationshi
 import guru.nidi.graphviz.engine.Format
 import guru.nidi.graphviz.engine.Graphviz
 import java.io.ByteArrayOutputStream
+import java.io.OutputStream
 
 class SvgDotWriter(entities: List<Entity>, relationships: List<Relationship>) :
     VisualizationWriter(entities, relationships) {
@@ -22,7 +23,7 @@ class SvgDotWriter(entities: List<Entity>, relationships: List<Relationship>) :
 
         Graphviz.fromGraph(graph)
             .render(Format.SVG)
-            .toOutputStream(outputStream)
+            .toOutputStream(outputStream as OutputStream)
         //.toFile(File("UML.svg"))
 
         return outputStream.toString()
