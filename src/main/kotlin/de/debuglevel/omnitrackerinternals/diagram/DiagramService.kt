@@ -10,6 +10,6 @@ class DiagramService(
     private val logger = KotlinLogging.logger {}
 
     fun generateEntityRelationshipDiagramSvg(): String {
-        return SvgDotWriter(omnitrackerReader.entities, omnitrackerReader.relationships).generate()
+        return SvgVisualizationWriter(omnitrackerReader.entities, omnitrackerReader.relationships).generate()
     }
 }

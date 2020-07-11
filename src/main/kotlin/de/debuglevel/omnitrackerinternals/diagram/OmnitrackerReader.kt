@@ -10,12 +10,12 @@ import javax.inject.Singleton
 
 @Singleton
 class OmnitrackerReader(
-    val folderService: de.debuglevel.omnitrackerdatabasebinding.folder.FolderService,
-    val fieldService: de.debuglevel.omnitrackerdatabasebinding.field.FieldService
+    private val folderService: de.debuglevel.omnitrackerdatabasebinding.folder.FolderService,
+    private val fieldService: de.debuglevel.omnitrackerdatabasebinding.field.FieldService
 ) {
     private val logger = KotlinLogging.logger {}
 
-    fun sanitize(name: String): String {
+    private fun sanitize(name: String): String {
         return name
 
         return name.replace(" ", "_")
@@ -33,8 +33,6 @@ class OmnitrackerReader(
             .replace("%", "_")
     }
 
-    //private val omnitrackerDatabase = OmnitrackerDatabase()
-
     private val fields = fieldService.getAll()
     private val folders = folderService.getAll()
 
@@ -44,7 +42,7 @@ class OmnitrackerReader(
                 folders.values.map { folder ->
                     val attributes =
                         fields.values.filter { it.folderId == folder.id }
-                            .map { Attribute(sanitize(it.label), it, false, false) }
+                            .map { Attribute(sanitize(it.label), it, primaryKey = false, foreignKey = false) }
 
                     Entity(sanitize("[${folder.id}] ${folder.name}"), folder, attributes)
                 }
@@ -58,7 +56,7 @@ class OmnitrackerReader(
 
             for (entity in entities) {
                 for (attribute in entity.attributes.filter { it.field.referenceFolderId != null && it.field.referenceFolderId != 0 }) {
-                    logger.debug { "Searching for folder with id='${attribute.field.referenceFolderId}'..." }
+                    logger.trace { "Searching for folder with id='${attribute.field.referenceFolderId}'..." }
                     val referencedEntity =
                         entities.firstOrNull { it.folder.id == attribute.field.referenceFolderId } // CAVEAT: the sample database actually contains references to folder 0 or others which do not exist; hence firstOrNull()
 

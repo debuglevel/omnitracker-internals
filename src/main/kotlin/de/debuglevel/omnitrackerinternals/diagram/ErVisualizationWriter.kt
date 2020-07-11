@@ -4,28 +4,31 @@ import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Attribute
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Cardinality
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Entity
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Relationship
+import mu.KotlinLogging
 
-class ErWriter(entities: List<Entity>, relationships: List<Relationship>) :
+class ErVisualizationWriter(entities: List<Entity>, relationships: List<Relationship>) :
     VisualizationWriter(entities, relationships) {
+    private val logger = KotlinLogging.logger {}
+
     override fun generate(): String {
         var output = ""
-        output += entities.map { generate(it) }.joinToString(separator = "\n\n")
+        output += entities.joinToString(separator = "\n\n") { generate(it) }
         output += "\n\n"
-        output += relationships.map { generate(it) }.joinToString(separator = "\n")
+        output += relationships.joinToString(separator = "\n") { generate(it) }
 
         return output
     }
 
-    fun generate(entity: Entity): String {
+    private fun generate(entity: Entity): String {
         var output = ""
         output += "[${entity.name}]"
         output += " {bgcolor: \"${entity.color}\"}\n"
-        output += entity.attributes.map { generate(it) }.joinToString(separator = "\n")
+        output += entity.attributes.joinToString(separator = "\n") { generate(it) }
 
         return output
     }
 
-    fun generate(attribute: Attribute): String {
+    private fun generate(attribute: Attribute): String {
         var output = ""
         output += if (attribute.foreignKey) "+" else ""
         output += if (attribute.primaryKey) "*" else ""
@@ -35,7 +38,7 @@ class ErWriter(entities: List<Entity>, relationships: List<Relationship>) :
         return output
     }
 
-    fun generate(relationship: Relationship): String {
+    private fun generate(relationship: Relationship): String {
         var output = ""
         output += "${relationship.left.name} "
         output += when (relationship.rightHasThatManyLefts) {

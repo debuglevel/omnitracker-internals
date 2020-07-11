@@ -4,21 +4,23 @@ import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Attribute
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Cardinality
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Entity
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Relationship
+import mu.KotlinLogging
 import net.sourceforge.plantuml.FileFormat
 import net.sourceforge.plantuml.FileFormatOption
 import net.sourceforge.plantuml.SourceStringReader
 import java.io.ByteArrayOutputStream
 import java.nio.charset.Charset
 
-
-class UmlWriter(entities: List<Entity>, relationships: List<Relationship>) :
+class PlantUmlVisualizationWriter(entities: List<Entity>, relationships: List<Relationship>) :
     VisualizationWriter(entities, relationships) {
+    private val logger = KotlinLogging.logger {}
+
     override fun generate(): String {
         var output = ""
 
         output += "@startuml"
 
-        output += entities.map { generate(it) }.joinToString(separator = "\n\n")
+        output += entities.joinToString(separator = "\n\n") { generate(it) }
         output += "\n\n"
         //output += relationships.map { generate(it) }.joinToString(separator = "\n")
 
@@ -29,7 +31,7 @@ class UmlWriter(entities: List<Entity>, relationships: List<Relationship>) :
         //return output
     }
 
-    fun generateFile(plantumlCode: String): String {
+    private fun generateFile(plantumlCode: String): String {
         val reader = SourceStringReader(plantumlCode)
         val os = ByteArrayOutputStream()
 
@@ -49,7 +51,7 @@ class UmlWriter(entities: List<Entity>, relationships: List<Relationship>) :
         return svg
     }
 
-    fun generate(entity: Entity): String {
+    private fun generate(entity: Entity): String {
         var output = ""
         //output += "${entity.hashCode()}"
         //output += "[${entity.name}]"
@@ -59,7 +61,7 @@ class UmlWriter(entities: List<Entity>, relationships: List<Relationship>) :
         return output
     }
 
-    fun generate(entity: Entity, attribute: Attribute): String {
+    private fun generate(entity: Entity, attribute: Attribute): String {
         var output = ""
         //output += if (attribute.foreignKey) "+" else ""
         //output += if (attribute.primaryKey) "*" else ""
@@ -74,9 +76,9 @@ class UmlWriter(entities: List<Entity>, relationships: List<Relationship>) :
         return output
     }
 
-    fun generate(relationship: Relationship): String {
+    private fun generate(relationship: Relationship): String {
         var output = ""
-        output += "${relationship.left.name}"
+        output += relationship.left.name
 
         output += when (relationship.rightHasThatManyLefts) {
             Cardinality.One -> "\"1\""
@@ -93,7 +95,7 @@ class UmlWriter(entities: List<Entity>, relationships: List<Relationship>) :
             Cardinality.ZeroOrMore -> "\"0+\""
             else -> ""
         }
-        output += "${relationship.right.name}"
+        output += relationship.right.name
         output += if (relationship.label != null) " : ${relationship.label}" else ""
 
         return output

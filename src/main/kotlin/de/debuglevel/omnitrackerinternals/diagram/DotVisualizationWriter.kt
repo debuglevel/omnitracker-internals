@@ -3,56 +3,59 @@ package de.debuglevel.omnitrackerinternals.diagram
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Attribute
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Entity
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Relationship
+import mu.KotlinLogging
 
-
-class DotWriter(entities: List<Entity>, relationships: List<Relationship>) :
+class DotVisualizationWriter(entities: List<Entity>, relationships: List<Relationship>) :
     VisualizationWriter(entities, relationships) {
+    private val logger = KotlinLogging.logger {}
+
     override fun generate(): String {
-        var s = "digraph graphname {\n"
+        logger.debug { "Generating DOT..." }
 
-        s += """
-        node [
-          shape = "record"
-        ]
-
-        edge [
-          arrowhead = "empty"
-        ]
+        var dot = """
+            digraph graphname {
+            
+            node [
+              shape = "record"
+            ]
+    
+            edge [
+              arrowhead = "empty"
+            ]
         """.trimIndent()
 
-        s += entities.map { generate(it) }.joinToString(separator = "\n\n")
-        s += relationships.map { generate(it) }.joinToString(separator = "\n")
+        dot += entities.joinToString(separator = "\n\n") { generate(it) }
+        dot += relationships.joinToString(separator = "\n") { generate(it) }
 
-        s += "\n}\n"
+        dot += "\n}\n"
 
-        return s
+        logger.debug { "Generated DOT" }
+        logger.trace { "Generated DOT: $dot" }
+        return dot
     }
 
-    fun generate(entity: Entity): String {
-        var output = ""
+    private fun generate(entity: Entity): String {
+        logger.debug { "Creating DOT description of entity $entity..." }
 
-        var label = entity.name
+        val label = entity.name
         //+ "|"
         //+ entity.attributes.map { generate(it) }.joinToString(separator = "\\l")
 
-        output += "${entity.hashCode()}[label=\"$label\"];\n"
-
+        val output = "${entity.hashCode()}[label=\"$label\"];\n"
         return output
     }
 
-    fun generate(attribute: Attribute): String {
-        var output = ""
+    private fun generate(attribute: Attribute): String {
+        logger.debug { "Creating DOT description of attribute $attribute..." }
 
-        output += "${attribute.name}"
-
+        val output = attribute.name
         return output
     }
 
-    fun generate(relationship: Relationship): String {
-        var output = ""
+    private fun generate(relationship: Relationship): String {
+        logger.debug { "Creating DOT description of relationship $relationship..." }
 
-        output = "${relationship.left.hashCode()} -> ${relationship.right.hashCode()}"
-
+        val output = "${relationship.left.hashCode()} -> ${relationship.right.hashCode()}"
         return output
 
 //        var output = ""
