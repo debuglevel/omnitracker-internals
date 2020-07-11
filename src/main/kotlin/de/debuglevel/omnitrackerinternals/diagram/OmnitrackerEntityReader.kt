@@ -9,7 +9,7 @@ import mu.KotlinLogging
 import javax.inject.Singleton
 
 @Singleton
-class OmnitrackerReader(
+class OmnitrackerEntityReader(
     private val folderService: de.debuglevel.omnitrackerdatabasebinding.folder.FolderService,
     private val fieldService: de.debuglevel.omnitrackerdatabasebinding.field.FieldService
 ) {

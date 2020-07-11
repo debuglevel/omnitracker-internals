@@ -5,11 +5,14 @@ import javax.inject.Singleton
 
 @Singleton
 class DiagramService(
-    private val omnitrackerReader: OmnitrackerReader
+    private val omnitrackerEntityReader: OmnitrackerEntityReader
 ) {
     private val logger = KotlinLogging.logger {}
 
     fun generateEntityRelationshipDiagramSvg(): String {
-        return SvgVisualizationWriter(omnitrackerReader.entities, omnitrackerReader.relationships).generate()
+        return SvgVisualizationWriter(
+            omnitrackerEntityReader.entities,
+            omnitrackerEntityReader.relationships
+        ).generate()
     }
 }

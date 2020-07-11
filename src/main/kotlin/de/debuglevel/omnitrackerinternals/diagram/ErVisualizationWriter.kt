@@ -22,7 +22,7 @@ class ErVisualizationWriter(entities: List<Entity>, relationships: List<Relation
     private fun generate(entity: Entity): String {
         var output = ""
         output += "[${entity.name}]"
-        output += " {bgcolor: \"${entity.color}\"}\n"
+        output += " {bgcolor: \"${entity.hexcolor}\"}\n"
         output += entity.attributes.joinToString(separator = "\n") { generate(it) }
 
         return output
