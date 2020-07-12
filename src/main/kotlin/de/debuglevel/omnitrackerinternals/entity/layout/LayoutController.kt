@@ -5,6 +5,7 @@ import de.debuglevel.omnitrackerinternals.entity.EntityController
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
+import io.micronaut.http.annotation.Put
 import io.micronaut.http.server.types.files.StreamedFile
 import io.swagger.v3.oas.annotations.tags.Tag
 import mu.KotlinLogging
@@ -20,6 +21,19 @@ class LayoutController(
     @Get("/files/{id}")
     fun getLayoutFile(id: Int): StreamedFile {
         logger.debug("Called getLayoutFile()")
+
+        val layout = entityService.get(id)
+        val inputStream = layout!!.reportData.inputStream()
+        val fileExtension = layout.outputType?.fileExtension ?: ".unknown"
+        val filename = "${layout.name}.${fileExtension}"
+        return StreamedFile(inputStream, MediaType.TEXT_PLAIN_TYPE).attach(filename)
+    }
+
+    @Put("/files/{id}")
+    fun updateLayoutFile(id: Int): StreamedFile {
+        logger.debug("Called updateLayoutFile()")
+
+        TODO()
 
         val layout = entityService.get(id)
         val inputStream = layout!!.reportData.inputStream()
