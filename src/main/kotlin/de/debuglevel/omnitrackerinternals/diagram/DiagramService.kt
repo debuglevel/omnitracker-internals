@@ -1,6 +1,7 @@
 package de.debuglevel.omnitrackerinternals.diagram
 
 import de.debuglevel.omnitrackerinternals.diagram.formats.SvgVisualizationWriter
+import de.debuglevel.omnitrackerinternals.diagram.formats.YedVisualizationWriter
 import mu.KotlinLogging
 import javax.inject.Singleton
 
@@ -12,6 +13,13 @@ class DiagramService(
 
     fun generateEntityRelationshipDiagramSvg(): String {
         return SvgVisualizationWriter(
+            omnitrackerEntityReader.entities,
+            omnitrackerEntityReader.relationships
+        ).generate()
+    }
+
+    fun generateEntityRelationshipDiagramYed(): String {
+        return YedVisualizationWriter(
             omnitrackerEntityReader.entities,
             omnitrackerEntityReader.relationships
         ).generate()

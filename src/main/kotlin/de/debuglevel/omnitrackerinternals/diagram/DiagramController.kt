@@ -13,9 +13,16 @@ class DiagramController(
     private val logger = KotlinLogging.logger {}
 
     @Get("/entityrelationship/svg/", produces = ["image/svg+xml"])
-    fun getOne(): String {
-        logger.debug("Called getOne()")
+    fun getOneSvg(): String {
+        logger.debug("Called getOneSvg()")
 
         return diagramService.generateEntityRelationshipDiagramSvg()
+    }
+
+    @Get("/entityrelationship/yed/", produces = ["application/graphml+xml"])
+    fun getOneYedGraphml(): String {
+        logger.debug("Called getOneYedGraphml()")
+
+        return diagramService.generateEntityRelationshipDiagramYed()
     }
 }
