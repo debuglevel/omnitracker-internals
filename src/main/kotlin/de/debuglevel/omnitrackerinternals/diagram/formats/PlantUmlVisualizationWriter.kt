@@ -1,4 +1,4 @@
-package de.debuglevel.omnitrackerinternals.diagram
+package de.debuglevel.omnitrackerinternals.diagram.formats
 
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Attribute
 import de.debuglevel.omnitrackerinternals.diagram.entityrelationship.Cardinality
