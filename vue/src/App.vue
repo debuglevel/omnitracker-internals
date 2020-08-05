@@ -1,66 +1,68 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <!--<v-system-bar app></v-system-bar> -->
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+    <v-navigation-drawer
+        app
+        dark
+        expand-on-hover
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+
+      <v-list
+        dense
+        nav
+      >
+        <v-list-item
+          v-for="item in navigationItems"
+          :key="item.title"
+          :to="item.link"
+          link
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar app color="teal" dark>
+      <v-toolbar-title>OMNITRACKER Internals</v-toolbar-title>
+      <v-spacer></v-spacer>
     </v-app-bar>
 
-    <!--
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/scripts">Scripts</router-link> |
-      <router-link to="/layouts">Layouts</router-link> |
-      <router-link to="/webserviceconsumercallprofiles">WebServiceConsumerCall Profiles</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view /> -->
-
+    <!-- Sizes your content based upon application components -->
     <v-main>
-      <HelloWorld />
+      <!-- Provides the application the proper gutter -->
+      <v-container fluid>
+        <router-view />
+      </v-container>
     </v-main>
+
+    <v-footer app>
+      Built with 💛👊😉
+    </v-footer>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
-
 export default {
   name: "App",
 
   components: {
-    HelloWorld
   },
 
   data: () => ({
-    //
+    navigationItems: [
+          { title: 'Home', icon: 'mdi-home', link: '/' },
+          { title: 'Scripts', icon: 'mdi-script-text', link: '/scripts' },
+          { title: 'Layouts', icon: 'mdi-file-document', link: '/layouts' },
+          { title: 'WSCC-Profiles', icon: 'mdi-web', link: '/webserviceconsumercallprofiles' },
+          { title: 'About', icon: 'mdi-information', link: '/about' },
+        ],
   })
 };
 </script>

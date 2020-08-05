@@ -2,12 +2,15 @@
   <div class="layouts">
     <h1>Layouts</h1>
 
-    <table class="table table-sm table-hover">
-      <thead class="thead-dark">
-        <th>Folder</th>
-        <th>Name</th>
-        <th>File Type</th>
-        <th>Output File Type</th>
+    <!-- TODO: replace with v-data-table; unknown if flat object format is strictly needed or paths would work -->
+    <v-simple-table
+      dense
+      >
+      <thead>
+        <th class="text-left">Folder</th>
+        <th class="text-left">Name</th>
+        <th class="text-left">File Type</th>
+        <th class="text-left">Output File Type</th>
       </thead>
       <tbody>
         <tr
@@ -17,7 +20,7 @@
           v-bind:key="item.id"
         ></tr>
       </tbody>
-    </table>
+    </v-simple-table>
   </div>
 </template>
 

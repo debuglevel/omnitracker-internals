@@ -2,12 +2,14 @@
   <div class="scripts">
       <h1>Scripts</h1>
 
-      <table class="table table-sm table-hover">
-        <thead class="thead-dark">
-          <th>Folder</th>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Content</th>
+    <v-simple-table
+      dense
+      >
+        <thead>
+          <th class="text-left">Folder</th>
+          <th class="text-left">Name</th>
+          <th class="text-left">Type</th>
+          <th class="text-left">Content</th>
         </thead>
         <tbody>
           <tr
@@ -17,7 +19,7 @@
             v-bind:key="item.id"
           ></tr>
         </tbody>
-      </table>
+      </v-simple-table>
   </div>
 </template>
 

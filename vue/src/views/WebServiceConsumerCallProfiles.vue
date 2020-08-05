@@ -2,11 +2,13 @@
   <div class="webserviceconsumercallprofiles">
       <h1>WebServiceConsumer Call Profiles</h1>
 
-      <table class="table table-sm table-hover">
-        <thead class="thead-dark">
-          <th>Folder</th>
-          <th>WSCC name</th>
-          <th>Status</th>
+    <v-simple-table
+      dense
+      >
+        <thead>
+          <th class="text-left">Folder</th>
+          <th class="text-left">WSCC name</th>
+          <th class="text-left">Status</th>
         </thead>
         <tbody>
           <tr
@@ -16,7 +18,7 @@
             v-bind:key="item.id"
           ></tr>
         </tbody>
-      </table>
+      </v-simple-table>
   </div>
 </template>
 
