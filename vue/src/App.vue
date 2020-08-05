@@ -2,16 +2,8 @@
   <v-app>
     <!--<v-system-bar app></v-system-bar> -->
 
-    <v-navigation-drawer
-        app
-        dark
-        expand-on-hover
-      >
-
-      <v-list
-        dense
-        nav
-      >
+    <v-navigation-drawer app dark expand-on-hover>
+      <v-list dense nav>
         <v-list-item
           v-for="item in navigationItems"
           :key="item.title"
@@ -52,17 +44,20 @@
 export default {
   name: "App",
 
-  components: {
-  },
+  components: {},
 
   data: () => ({
     navigationItems: [
-          { title: 'Home', icon: 'mdi-home', link: '/' },
-          { title: 'Scripts', icon: 'mdi-script-text', link: '/scripts' },
-          { title: 'Layouts', icon: 'mdi-file-document', link: '/layouts' },
-          { title: 'WSCC-Profiles', icon: 'mdi-web', link: '/webserviceconsumercallprofiles' },
-          { title: 'About', icon: 'mdi-information', link: '/about' },
-        ],
+      { title: "Home", icon: "mdi-home", link: "/" },
+      { title: "Scripts", icon: "mdi-script-text", link: "/scripts" },
+      { title: "Layouts", icon: "mdi-file-document", link: "/layouts" },
+      {
+        title: "WSCC-Profiles",
+        icon: "mdi-web",
+        link: "/webserviceconsumercallprofiles"
+      },
+      { title: "About", icon: "mdi-information", link: "/about" }
+    ]
   })
 };
 </script>

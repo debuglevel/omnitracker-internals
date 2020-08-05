@@ -3,7 +3,9 @@
     <td>{{ script.folder.path }}</td>
     <td>{{ script.name }}</td>
     <td>{{ script.type }}</td>
-    <td><pre>{{ script.content }}</pre></td>
+    <td>
+      <pre>{{ script.content }}</pre>
+    </td>
   </tr>
 </template>
 

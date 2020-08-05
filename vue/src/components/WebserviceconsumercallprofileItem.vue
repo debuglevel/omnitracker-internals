@@ -13,9 +13,9 @@ export default {
     webserviceconsumercallprofile: {}
   },
   methods: {
-    statusStyle: function (status) {
+    statusStyle: function(status) {
       return status == "Valid" ? "table-success" : "table-danger";
-    },
-  },
+    }
+  }
 };
 </script>

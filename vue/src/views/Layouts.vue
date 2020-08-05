@@ -3,9 +3,7 @@
     <h1>Layouts</h1>
 
     <!-- TODO: replace with v-data-table; unknown if flat object format is strictly needed or paths would work -->
-    <v-simple-table
-      dense
-      >
+    <v-simple-table dense>
       <thead>
         <th class="text-left">Folder</th>
         <th class="text-left">Name</th>
@@ -27,7 +25,7 @@
 <script>
 // @ is an alias to /src
 import LayoutItem from "@/components/LayoutItem.vue";
-import axios from 'axios'
+import axios from "axios";
 
 export default {
   name: "Layouts",
@@ -38,14 +36,20 @@ export default {
   data: function() {
     return {
       layouts: [
-        { id: 1, name: 'Layout 1', outputType: 'PDF', mailmergeFiletype: 'Whatever', folder: { path: '\\Foo\\Bar' } },
-      ],
-    }
+        {
+          id: 1,
+          name: "Layout 1",
+          outputType: "PDF",
+          mailmergeFiletype: "Whatever",
+          folder: { path: "\\Foo\\Bar" }
+        }
+      ]
+    };
   },
   mounted() {
     axios
       .get("http://localhost:8080/layouts/")
-      .then((response) => (this.layouts = response.data));
+      .then(response => (this.layouts = response.data));
   }
 };
 </script>

@@ -2,7 +2,9 @@
   <tr>
     <td>{{ layout.folder.path }}</td>
     <td>
-      <a v-bind:href="'http://localhost:8080/layouts/files/' + layout.id">{{ layout.name }}</a>
+      <a v-bind:href="'http://localhost:8080/layouts/files/' + layout.id">{{
+        layout.name
+      }}</a>
     </td>
     <td>{{ layout.outputType }}</td>
     <td>{{ layout.mailmergeFiletype }}</td>
