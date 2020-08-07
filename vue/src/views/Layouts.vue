@@ -7,8 +7,8 @@
       <thead>
         <th class="text-left">Folder</th>
         <th class="text-left">Name</th>
-        <th class="text-left">File Type</th>
-        <th class="text-left">Output File Type</th>
+        <th class="text-left">Template Type</th>
+        <th class="text-left">Output Type</th>
       </thead>
       <tbody>
         <tr
