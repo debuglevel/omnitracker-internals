@@ -21,10 +21,10 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app color="teal" dark>
+    <!-- <v-app-bar app color="teal" dark>
       <v-toolbar-title>OMNITRACKER Internals</v-toolbar-title>
       <v-spacer></v-spacer>
-    </v-app-bar>
+    </v-app-bar> -->
 
     <!-- Sizes your content based upon application components -->
     <v-main>
