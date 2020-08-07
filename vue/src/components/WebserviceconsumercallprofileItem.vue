@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     statusStyle: function(status) {
-      return status == "Valid" ? "table-success" : "table-danger";
+      return status == "Valid" ? "green lighten-4" : "red lighten-4";
     }
   }
 };
