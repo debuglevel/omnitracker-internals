@@ -46,6 +46,13 @@ export default {
 
   components: {},
 
+    watch: {
+    $route(to) {
+      this.title = "OT Internals: " + to.meta.title || "OMNITRACKER Internals";
+      document.title = this.title;
+    }
+  },
+
   data: () => ({
     navigationItems: [
       { title: "Home", icon: "mdi-home", link: "/" },

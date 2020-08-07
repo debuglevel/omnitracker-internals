@@ -8,7 +8,10 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
+    meta: {
+      title: "Home",
+    },
   },
   {
     path: "/scripts",
@@ -17,7 +20,10 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "scripts" */ "../views/Scripts.vue")
+      import(/* webpackChunkName: "scripts" */ "../views/Scripts.vue"),
+      meta: {
+        title: "Scripts",
+      },
   },
   {
     path: "/layouts",
@@ -26,7 +32,10 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "layouts" */ "../views/Layouts.vue")
+      import(/* webpackChunkName: "layouts" */ "../views/Layouts.vue"),
+      meta: {
+        title: "Layouts",
+      },
   },
   {
     path: "/webserviceconsumercallprofiles",
@@ -37,7 +46,10 @@ const routes = [
     component: () =>
       import(
         /* webpackChunkName: "webserviceconsumercallprofiles" */ "../views/WebServiceConsumerCallProfiles.vue"
-      )
+      ),
+      meta: {
+        title: "WebServiceConsumerCallProfiles",
+      },
   },
   {
     path: "/about",
@@ -46,7 +58,10 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      meta: {
+        title: "About",
+      },
   }
 ];
 
