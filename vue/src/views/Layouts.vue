@@ -9,6 +9,7 @@
         <th class="text-left">Name</th>
         <th class="text-left">Template Type</th>
         <th class="text-left">Output Type</th>
+        <th class="text-left">Upload Template</th>
       </thead>
       <tbody>
         <tr
