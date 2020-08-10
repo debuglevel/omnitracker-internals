@@ -25,6 +25,7 @@
 // @ is an alias to /src
 import ScriptItem from "@/components/ScriptItem.vue";
 import axios from "axios";
+import { authenticationService } from "../services/authentication.service";
 
 export default {
   name: "Scripts",
@@ -47,7 +48,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:8080/scripts/")
+      .get("http://localhost:8080/scripts/", authenticationService.authConfig())
       .then(response => (this.scripts = response.data));
   }
 };

@@ -24,6 +24,7 @@
 // @ is an alias to /src
 import WebserviceconsumercallprofileItem from "@/components/WebserviceconsumercallprofileItem.vue";
 import axios from "axios";
+import { authenticationService } from "../services/authentication.service";
 
 export default {
   name: "WebServiceConsumerCallProfiles",
@@ -51,7 +52,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:8080/webserviceconsumercallprofiles/")
+      .get("http://localhost:8080/webserviceconsumercallprofiles/", authenticationService.authConfig())
       .then(response => (this.webserviceconsumercallprofiles = response.data));
   }
 };
