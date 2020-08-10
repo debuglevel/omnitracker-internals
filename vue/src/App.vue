@@ -56,6 +56,7 @@ export default {
   data: () => ({
     navigationItems: [
       { title: "Home", icon: "mdi-home", link: "/" },
+      { title: "Login", icon: "mdi-account-circle", link: "/login" },
       { title: "Scripts", icon: "mdi-script-text", link: "/scripts" },
       { title: "Layouts", icon: "mdi-file-document", link: "/layouts" },
       {

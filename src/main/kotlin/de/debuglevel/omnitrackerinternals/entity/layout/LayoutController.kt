@@ -6,11 +6,14 @@ import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.server.types.files.StreamedFile
+import io.micronaut.security.annotation.Secured
+import io.micronaut.security.rules.SecurityRule
 import io.swagger.v3.oas.annotations.tags.Tag
 import mu.KotlinLogging
 
 @Controller("/layouts")
 @Tag(name = "layouts")
+@Secured(SecurityRule.IS_AUTHENTICATED)
 class LayoutController(
     override val entityService: LayoutService
 ) :

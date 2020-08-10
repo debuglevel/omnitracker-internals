@@ -2,11 +2,14 @@ package de.debuglevel.omnitrackerinternals.diagram
 
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
+import io.micronaut.security.annotation.Secured
+import io.micronaut.security.rules.SecurityRule
 import io.swagger.v3.oas.annotations.tags.Tag
 import mu.KotlinLogging
 
 @Controller("/diagrams")
 @Tag(name = "diagrams")
+@Secured(SecurityRule.IS_AUTHENTICATED)
 class DiagramController(
     private val diagramService: DiagramService
 ) {
