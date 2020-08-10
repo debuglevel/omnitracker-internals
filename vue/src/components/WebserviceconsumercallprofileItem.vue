@@ -1,6 +1,6 @@
 <template>
   <tr v-bind:class="statusStyle(webserviceconsumercallprofile.status)">
-    <td>{{ webserviceconsumercallprofile.folder.path }}</td>
+    <td>{{ path }}</td>
     <td>{{ webserviceconsumercallprofile.name }}</td>
     <td>{{ webserviceconsumercallprofile.status }}</td>
   </tr>
@@ -15,6 +15,21 @@ export default {
   methods: {
     statusStyle: function(status) {
       return status == "Valid" ? "green lighten-4" : "red lighten-4";
+    },
+    containsKey(obj, key) {
+      return Object.keys(obj).includes(key);
+    },
+  },
+  computed: {
+    path: function () {
+      if (this.containsKey(this.webserviceconsumercallprofile, 'folder') && this.containsKey(this.webserviceconsumercallprofile.folder, 'path'))
+      {
+        return this.webserviceconsumercallprofile.folder.path;
+      }
+      else
+      {
+        return "(None)";
+      }
     }
   }
 };
