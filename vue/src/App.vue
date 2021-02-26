@@ -59,6 +59,7 @@ export default {
       { title: "Login", icon: "mdi-account-circle", link: "/login" },
       { title: "Scripts", icon: "mdi-script-text", link: "/scripts" },
       { title: "Layouts", icon: "mdi-file-document", link: "/layouts" },
+      { title: "KPIs", icon: "mdi-finance", link: "/kpis" },
       {
         title: "WSCC-Profiles",
         icon: "mdi-web",
