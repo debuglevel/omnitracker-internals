@@ -60,6 +60,7 @@ export default {
       { title: "Scripts", icon: "mdi-script-text", link: "/scripts" },
       { title: "Layouts", icon: "mdi-file-document", link: "/layouts" },
       { title: "KPIs", icon: "mdi-finance", link: "/kpis" },
+      { title: "AutoCalculations", icon: "mdi-calculator", link: "/autocalculations" },
       {
         title: "WSCC-Profiles",
         icon: "mdi-web",

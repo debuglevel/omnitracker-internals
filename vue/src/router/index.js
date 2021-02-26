@@ -50,6 +50,18 @@ const routes = [
     },
   },
   {
+    path: "/autocalculations",
+    name: "Autocalculations",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "layouts" */ "../views/Autocalculations.vue"),
+    meta: {
+      title: "AutoCalculations",
+    },
+  },
+  {
     path: "/webserviceconsumercallprofiles",
     name: "WebServiceConsumerCall Profiles",
     // route level code-splitting
