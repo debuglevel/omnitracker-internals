@@ -39,6 +39,16 @@ export default {
           id: 1,
           name: "KPI 1",
           folder: { path: "\\Foo\\Bar" }
+        },
+        {
+          id: 2,
+          name: "KPI 2",
+          folder: { path: "\\Foo\\Bar" }
+        },
+        {
+          id: 3,
+          name: "KPI 3",
+          folder: { path: "\\Foo\\Bar" }
         }
       ]
     };
