@@ -2,38 +2,31 @@
   <div class="kpis">
     <h1>KPIs</h1>
 
-    <!-- TODO: replace with v-data-table; unknown if flat object format is strictly needed or paths would work -->
-    <v-simple-table dense>
-      <thead>
-        <th class="text-left">Folder</th>
-        <th class="text-left">Name</th>
-      </thead>
-      <tbody>
-        <tr
-          is="kpi-item"
-          v-for="item in kpis"
-          v-bind:kpi="item"
-          v-bind:key="item.id"
-        ></tr>
-      </tbody>
-    </v-simple-table>
+    <v-data-table
+      :headers="headers"
+      :items="kpis"
+      :items-per-page="-1"
+    ></v-data-table>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import KpiItem from "@/components/KpiItem.vue";
 import { authenticationService } from "../services/authentication.service";
 import axios from "axios";
 
 export default {
   name: "Kpis",
   components: {
-    KpiItem
   },
 
   data: function() {
     return {
+      headers: [
+        { text: 'Folder', value: 'folder.path' },
+        { text: 'Name', value: 'name' },
+      ],
+
       kpis: [
         {
           id: 1,
