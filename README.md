@@ -7,9 +7,15 @@
 
 # OMNITRACKER internals
 
-OMNITRACKER internals is a web microservice to access some OMNITRACKER internals:
-
--  ... TODO
+OMNITRACKER internals is a microservice and frontend to access (i.e. show a list of) some OMNITRACKER internals:
+* AutoCalculations
+* Fields
+* Folders
+* KPIs
+* Layouts
+* Scripts
+* WebService Consumer Profiles
+* WebService Consumer Call Profiles 
 
 # HTTP API
 
