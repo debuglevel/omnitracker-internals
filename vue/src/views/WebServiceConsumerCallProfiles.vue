@@ -6,6 +6,7 @@
       :headers="headers"
       :items="webserviceconsumercallprofiles"
       :items-per-page="-1"
+      :hide-default-footer="true"
       :item-class= "statusStyle"
     >
     </v-data-table>

@@ -6,6 +6,7 @@
       :headers="headers"
       :items="autocalculations"
       :items-per-page="-1"
+      :hide-default-footer="true"
     ></v-data-table>
   </div>
 </template>

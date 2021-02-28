@@ -6,6 +6,7 @@
       :headers="headers"
       :items="scripts"
       :items-per-page="-1"
+      :hide-default-footer="true"
     >
       <template v-slot:item.folder.path="{ item }">
         {{ path(item) }}

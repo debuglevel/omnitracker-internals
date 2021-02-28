@@ -6,6 +6,7 @@
       :headers="headers"
       :items="kpis"
       :items-per-page="-1"
+      :hide-default-footer="true"
     ></v-data-table>
   </div>
 </template>
@@ -42,7 +43,32 @@ export default {
           id: 3,
           name: "KPI 3",
           folder: { path: "\\Foo\\Bar" }
-        }
+        },
+        {
+          id: 4,
+          name: "KPI 4",
+          folder: { path: "\\Foo\\Bar" }
+        },
+        {
+          id: 5,
+          name: "KPI 5",
+          folder: { path: "\\Foo\\Bar" }
+        },
+        {
+          id: 6,
+          name: "KPI 6",
+          folder: { path: "\\Foo\\Bar" }
+        },
+        {
+          id: 7,
+          name: "KPI 7",
+          folder: { path: "\\Foo\\Bar" }
+        },
+        {
+          id: 8,
+          name: "KPI 8",
+          folder: { path: "\\Foo\\Bar" }
+        },
       ]
     };
   },
