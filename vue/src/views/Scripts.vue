@@ -2,39 +2,39 @@
   <div class="scripts">
     <h1>Scripts</h1>
 
-    <v-simple-table dense>
-      <thead>
-        <th class="text-left">Folder</th>
-        <th class="text-left">Name</th>
-        <th class="text-left">Type</th>
-        <th class="text-left">Content</th>
-      </thead>
-      <tbody>
-        <tr
-          is="script-item"
-          v-for="item in scripts"
-          v-bind:script="item"
-          v-bind:key="item.id"
-        ></tr>
-      </tbody>
-    </v-simple-table>
+    <v-data-table
+      :headers="headers"
+      :items="scripts"
+      :items-per-page="-1"
+    >
+      <template v-slot:item.content="{ item }">
+        <code-dialog v-bind:title="item.folder.path+': '+item.name" v-bind:code="item.content" />
+      </template>
+    </v-data-table>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ScriptItem from "@/components/ScriptItem.vue";
+import CodeDialog from "@/components/CodeDialog.vue";
 import axios from "axios";
 import { authenticationService } from "../services/authentication.service";
 
 export default {
   name: "Scripts",
   components: {
-    ScriptItem
+    CodeDialog
   },
 
   data: function() {
     return {
+      headers: [
+        { text: 'Folder', value: 'folder.path' },
+        { text: 'Name', value: 'name' },
+        { text: 'Type', value: 'type' },
+        { text: 'Content', value: 'content' },
+      ],
+
       scripts: [
         {
           id: 1,
