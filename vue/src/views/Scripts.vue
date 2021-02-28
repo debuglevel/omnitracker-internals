@@ -7,8 +7,12 @@
       :items="scripts"
       :items-per-page="-1"
     >
+      <template v-slot:item.folder.path="{ item }">
+        {{ path(item) }}
+      </template>
+
       <template v-slot:item.content="{ item }">
-        <code-dialog v-bind:title="item.folder.path+': '+item.name" v-bind:code="item.content" />
+        <code-dialog v-bind:title="path(item)+': '+item.name" v-bind:code="item.content" />
       </template>
     </v-data-table>
   </div>
@@ -26,6 +30,22 @@ export default {
     CodeDialog
   },
 
+  methods: {
+    containsKey(obj, key) {
+      return Object.keys(obj).includes(key);
+    },
+    path: function (script) {
+      if (this.containsKey(script, 'folder') && this.containsKey(script.folder, 'path'))
+      {
+        return script.folder.path;
+      }
+      else
+      {
+        return "(no folder)";
+      }
+    }
+  }, 
+
   data: function() {
     return {
       headers: [
@@ -42,7 +62,20 @@ export default {
           type: "Whatever Type",
           content: "Whatever Content",
           folder: { path: "\\Foo\\Bar" }
-        }
+        },
+        {
+          id: 2,
+          name: "Script 2",
+          type: "Whatever Type",
+          content: "Whatever Content",
+          folder: { }
+        },
+        {
+          id: 3,
+          name: "Script 3",
+          type: "Whatever Type",
+          content: "Whatever Content",
+        },
       ]
     };
   },
