@@ -61,7 +61,7 @@ export default {
           id: 1,
           name: "Script 1",
           type: "Whatever Type",
-          content: "Whatever Content",
+          content: "x\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx\nx",
           folder: { path: "\\Foo\\Bar" }
         },
         {
