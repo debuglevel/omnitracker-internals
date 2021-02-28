@@ -2,38 +2,40 @@
   <div class="webserviceconsumercallprofiles">
     <h1>WebServiceConsumer Call Profiles</h1>
 
-    <v-simple-table dense>
-      <thead>
-        <th class="text-left">Folder</th>
-        <th class="text-left">WSCC name</th>
-        <th class="text-left">Status</th>
-      </thead>
-      <tbody>
-        <tr
-          is="webserviceconsumercallprofile-item"
-          v-for="item in webserviceconsumercallprofiles"
-          v-bind:webserviceconsumercallprofile="item"
-          v-bind:key="item.id"
-        ></tr>
-      </tbody>
-    </v-simple-table>
+    <v-data-table
+      :headers="headers"
+      :items="webserviceconsumercallprofiles"
+      :items-per-page="-1"
+      :item-class= "statusStyle"
+    >
+    </v-data-table>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import WebserviceconsumercallprofileItem from "@/components/WebserviceconsumercallprofileItem.vue";
 import axios from "axios";
 import { authenticationService } from "../services/authentication.service";
 
 export default {
   name: "WebServiceConsumerCallProfiles",
   components: {
-    WebserviceconsumercallprofileItem
+  },
+
+  methods: {
+    statusStyle: function(item) {
+      return item.status == "Valid" ? ["green","lighten-4"] : ["red","lighten-4"];
+    }
   },
 
   data: function() {
     return {
+      headers: [
+        { text: 'Folder', value: 'folder.path' },
+        { text: 'WSCC name', value: 'name' },
+        { text: 'Status', value: 'status' },
+      ],
+
       webserviceconsumercallprofiles: [
         {
           id: 1,
