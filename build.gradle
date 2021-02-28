@@ -150,7 +150,7 @@ dependencies {
     implementation "io.swagger.core.v3:swagger-annotations"
 
     // OMNITRACKER
-    implementation "de.debuglevel.omnitrackerdatabasebinding:omnitrackerdatabasebinding:0.1.4-SNAPSHOT"
+    implementation "de.debuglevel.omnitrackerdatabasebinding:omnitrackerdatabasebinding:$omnitrackerdatabasebindingVersion"
 
     // Visualizations
     implementation "net.sourceforge.plantuml:plantuml:8059"
