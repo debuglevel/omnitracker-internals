@@ -68,14 +68,14 @@ export default {
           id: 2,
           name: "Script 2",
           type: "Whatever Type",
-          content: "Whatever Content",
+          content: "Do While True = True\n  ' I really like VBScript. Stable genius language.\nLoop",
           folder: { }
         },
         {
           id: 3,
           name: "Script 3",
           type: "Whatever Type",
-          content: "Whatever Content",
+          content: "function myFunction() {\n  document.getElementById(\"demo\").innerHTML = \"Paragraph changed.\";\n}",
         },
       ]
     };

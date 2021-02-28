@@ -13,7 +13,7 @@
         <v-card-title>
           <span class="headline">{{title}}</span>
         </v-card-title>
-        <v-card-text><pre>{{code}}</pre></v-card-text>
+        <v-card-text><pre v-highlight class="language-visual-basic"><code>{{code}}</code></pre></v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn text @click="dialog = false">Close</v-btn>
@@ -23,6 +23,10 @@
 </template>
 
 <script>
+import "vue-code-highlight/themes/prism.css";
+import 'prism-es6/components/prism-markup-templating';
+import 'prism-es6/components/prism-visual-basic';
+
 export default {
   name: "CodeDialog",
   props: {
