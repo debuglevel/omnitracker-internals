@@ -45,7 +45,7 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="5.6144278"
-     inkscape:cx="47.361436"
+     inkscape:cx="12.095153"
      inkscape:cy="16.755772"
      inkscape:window-x="1358"
      inkscape:window-y="-8"
@@ -62,12 +62,14 @@
      class="cls-1"
      points="43.75 0 23.31 0 43.75 48.32"
      id="polyline8"
-     transform="matrix(0.58972212,0,0,0.25149824,9.081013,35.28583)" />
+     transform="matrix(0.58972212,0,0,0.25149824,9.081013,35.28583)"
+     style="fill:#0a8bea;fill-opacity:1" />
   <polygon
      class="cls-2"
      points="43.75,100 0,14.58 22.92,14.58 43.75,62.5 "
      id="polygon10"
-     transform="matrix(0.58036668,0,0,0.25351707,9.525431,31.608683)" />
+     transform="matrix(0.58036668,0,0,0.25351707,9.525431,31.608683)"
+     style="fill:#8bcdff;fill-opacity:1" />
   <polyline
      class="cls-3"
      points="43.75 0 64.19 0 43.75 48.32"
@@ -89,19 +91,19 @@
      points="43.75 0 64.19 0 43.75 48.32"
      id="polyline12-0"
      transform="matrix(0.58972212,0,0,-0.25149824,9.081013,35.483075)"
-     style="fill:#1867c0" />
+     style="fill:#3c8ce6;fill-opacity:1" />
   <polygon
      class="cls-2"
      points="0,14.58 22.92,14.58 43.75,62.5 43.75,100 "
      id="polygon10-7"
      transform="matrix(0.58036668,0,0,-0.25292639,9.560549,39.155502)"
-     style="fill:#7bc6ff" />
+     style="fill:#50b2ff;fill-opacity:1" />
   <polygon
      class="cls-4"
      points="64.58,14.58 87.5,14.58 43.75,100 43.75,62.5 "
      id="polygon14-8"
      transform="matrix(0.58036668,0,0,-0.25292639,9.525431,39.170741)"
-     style="fill:#aeddff" />
+     style="fill:#7ac6ff;fill-opacity:1" />
   <polygon
      class="cls-2"
      points="22.92,14.58 43.75,62.5 43.75,100 0,14.58 "
@@ -119,11 +121,11 @@
      points="0,14.58 22.92,14.58 43.75,62.5 43.75,100 "
      id="polygon10-7-1-2"
      transform="matrix(-0.8,0,0,0.40709753,69.951592,29.290248)"
-     style="fill:#cccccc" />
+     style="fill:#999999" />
   <polygon
      class="cls-4"
      points="64.58,14.58 87.5,14.58 43.75,100 43.75,62.5 "
      id="polygon14-8-2-6"
      transform="matrix(-0.8,0,0,0.40709753,70,29.26572)"
-     style="fill:#e6e6e6" />
+     style="fill:#b3b3b3" />
 </svg>
