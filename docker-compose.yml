@@ -38,24 +38,26 @@ services:
 #    ports:
 #      - "8500:8500"
 
-#  # Database and admin tools
-#  db:
-#    image: mariadb:10.5.8-focal
-##    ports:
-##      - 3306:3306
-#    environment:
-#      - MYSQL_ROOT_PASSWORD=password
-#      # would not create a database if MYSQL_DATABASE is not set
-#      - MYSQL_DATABASE=db
-#      - MYSQL_USER=user
-#      - MYSQL_PASSWORD=password
-#  phpmyadmin:
-#    image: phpmyadmin:5.0.4
+  # Database and admin tools
+  db:
+    image: mariadb:10.5.9-focal
 #    ports:
-#      - 8090:80
-#    environment:
-#      - PMA_HOST=db
-#      - UPLOAD_LIMIT=1024000
+#      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      # would not create a database if MYSQL_DATABASE is not set
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    volumes:
+      - ./mariadb:/docker-entrypoint-initdb.d
+  phpmyadmin:
+    image: phpmyadmin:5.0.4
+    ports:
+      - 8090:80
+    environment:
+      - PMA_HOST=db
+      - UPLOAD_LIMIT=1024000
 #  adminer:
 #    image: adminer:4.7.8-standalone
 #    ports:

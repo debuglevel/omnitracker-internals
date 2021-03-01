@@ -9,7 +9,7 @@ TABLES=$(mdb-tables -1 $1)
 
 for t in $TABLES
 do
-  echo "DROP TABLE IF EXISTS $t;"
+  echo "DROP TABLE IF EXISTS \`$t\`;"
 done
 
 mdb-schema $1 mysql
