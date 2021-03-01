@@ -1,0 +1,4 @@
+{
+    "FROM_WHERE_IS_THIS_FILE": "vue/public/settings.json",
+    "apiUrl": "http://localhost:8080"
+}

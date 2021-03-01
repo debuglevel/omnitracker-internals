@@ -1,3 +1,4 @@
 {
+    "FROM_WHERE_IS_THIS_FILE": "vue/docker/settings.template.json",
     "apiUrl": "${API_URL}"
 }

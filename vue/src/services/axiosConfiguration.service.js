@@ -10,11 +10,12 @@ function getBaseUrl() {
 
   return (
     axios
-      .get("settings.json")
+      //.get("settings.json") // this is for vue/public/settings.json
+      .get("assets/settings.json") // this is for vue/docker/settings.template.json
       //.then(response => (this.baseUrl = response.data.baseUrl));
       .then((response) => {
-        console.info(`Got baseUrl=${response.data.baseUrl} from settings.json`);
-        return response.data.baseUrl;
+        console.info(`Got baseUrl=${response.data.apiUrl} from settings.json`);
+        return response.data.apiUrl;
       })
   );
 }
