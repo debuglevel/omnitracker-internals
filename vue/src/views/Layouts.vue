@@ -26,7 +26,7 @@
 <script>
 // @ is an alias to /src
 import LayoutItem from "@/components/LayoutItem.vue";
-import { authenticationService } from "../services/authentication.service";
+import { axiosConfigurationService } from "../services/axiosConfiguration.service";
 import axios from "axios";
 
 export default {
@@ -48,9 +48,9 @@ export default {
       ]
     };
   },
-  mounted() {
+  async mounted() {
     axios
-      .get("http://localhost:8080/layouts/", authenticationService.authConfig())
+      .get("/layouts/", await axiosConfigurationService.getAxiosRequestConfig())
       .then(response => (this.layouts = response.data));
   }
 };

@@ -1,21 +1,21 @@
 export const authenticationService = {
   login,
   logout,
-//   authHeader,
-  authConfig
+  //   authHeader,
+  authConfig,
 };
 
 function login(username, password) {
-    var auth = {};
-    // btoa() is insane's programming language for toBase64()
-    //auth.authdata = window.btoa(username + ":" + password);
-    auth.username = username;
-    auth.password = password;
-    localStorage.setItem("auth", JSON.stringify(auth));
+  var auth = {};
+  // btoa() is insane's programming language for toBase64()
+  //auth.authdata = window.btoa(username + ":" + password);
+  auth.username = username;
+  auth.password = password;
+  localStorage.setItem("auth", JSON.stringify(auth));
 }
 
 function logout() {
-    localStorage.removeItem("auth");
+  localStorage.removeItem("auth");
 }
 
 // function authHeader() {
@@ -30,14 +30,16 @@ function logout() {
 // }
 
 function authConfig() {
-    // return authorization header with basic auth credentials
-    let auth = JSON.parse(localStorage.getItem('auth'));
+  console.info("Getting auth configuration...");
 
-    return { auth: auth };
+  // return authorization header with basic auth credentials
+  let auth = JSON.parse(localStorage.getItem("auth"));
 
-    // if (auth && auth.authdata) {
-    //     return { 'Authorization': 'Basic ' + user.authdata };
-    // } else {
-    //     return {};
-    // }
+  return { auth: auth };
+
+  // if (auth && auth.authdata) {
+  //     return { 'Authorization': 'Basic ' + user.authdata };
+  // } else {
+  //     return {};
+  // }
 }

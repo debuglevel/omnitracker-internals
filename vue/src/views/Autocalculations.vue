@@ -13,7 +13,7 @@
 
 <script>
 // @ is an alias to /src
-import { authenticationService } from "../services/authentication.service";
+import { axiosConfigurationService } from "../services/axiosConfiguration.service";
 import axios from "axios";
 
 export default {
@@ -37,9 +37,9 @@ export default {
       ]
     };
   },
-  mounted() {
+  async mounted() {
     axios
-      .get("http://localhost:8080/autocalculations/", authenticationService.authConfig())
+      .get("/autocalculations/", await axiosConfigurationService.getAxiosRequestConfig())
       .then(response => (this.autocalculations = response.data));
   }
 };

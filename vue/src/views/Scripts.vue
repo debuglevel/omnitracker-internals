@@ -22,8 +22,8 @@
 <script>
 // @ is an alias to /src
 import CodeDialog from "@/components/CodeDialog.vue";
+import { axiosConfigurationService } from "../services/axiosConfiguration.service";
 import axios from "axios";
-import { authenticationService } from "../services/authentication.service";
 
 export default {
   name: "Scripts",
@@ -80,9 +80,9 @@ export default {
       ]
     };
   },
-  mounted() {
+  async mounted() {
     axios
-      .get("http://localhost:8080/scripts/", authenticationService.authConfig())
+      .get("/scripts/", await axiosConfigurationService.getAxiosRequestConfig())
       .then(response => (this.scripts = response.data));
   }
 };

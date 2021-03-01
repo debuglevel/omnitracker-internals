@@ -15,8 +15,8 @@
 
 <script>
 // @ is an alias to /src
+import { axiosConfigurationService } from "../services/axiosConfiguration.service";
 import axios from "axios";
-import { authenticationService } from "../services/authentication.service";
 
 export default {
   name: "WebServiceConsumerCallProfiles",
@@ -53,9 +53,9 @@ export default {
       ]
     };
   },
-  mounted() {
+  async mounted() {
     axios
-      .get("http://localhost:8080/webserviceconsumercallprofiles/", authenticationService.authConfig())
+      .get("/webserviceconsumercallprofiles/", await axiosConfigurationService.getAxiosRequestConfig())
       .then(response => (this.webserviceconsumercallprofiles = response.data));
   }
 };
