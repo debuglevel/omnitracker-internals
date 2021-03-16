@@ -2,14 +2,13 @@
 # from: https://stackoverflow.com/a/32423570/4764279
 # requires: sudo apt install mdbtools
 # sample usage:
-#   ./convert-sample-database-to-mysql.sh some.mdb > some.sql
-#   ./convert-sample-database-to-mysql.sh some.mdb | mysql destination-db -u user -p
+#   ./convert-database.sh some.mdb > some.sql
+#   ./convert-database.sh some.mdb | mysql destination-db -u user -p
 
 # warnings:
-#  MariaDB seems to be unable to hold tables with many colums; therefore this does not seem to work.
-#  for PostgreSQL, converting seems to has some issue regarding (at least) with boolean.
+#  MariaDB seems to be unable to hold tables with many columns; therefore this does not seem to work.
 #
-# a current version of mdbtools is included in debian:bullseye
+# a current version of mdbtools (0.9.x) is included in docker image debian:bullseye
 #  docker run -ti -v ${PWD}:/MOUNTPOINT debian:bullseye
 #  apt update && apt install p7zip-full mdbtools
 
