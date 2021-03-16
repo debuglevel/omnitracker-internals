@@ -1,3 +1,5 @@
+postgres
+
 # Ignore .project and .classpath created by gitpod.io and probably Eclipse IDE
 .project
 .classpath
